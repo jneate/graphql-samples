@@ -3,7 +3,7 @@
  The Universal Permissive License (UPL), Version 1.0
  -->
 <div class="oj-hybrid-padding">
-  <h1>REST / GraphQL</h1>
+  <h1>REST vs GraphQL</h1>
 
   <div class="oj-flex">
     <div class="oj-flex-item oj-panel">
@@ -13,7 +13,7 @@
       </oj-thematic-map>
     </div>
 
-    <div class="oj-flex-item oj-panel">
+    <div class="oj-flex-item oj-panel" style="max-width: 500px">
 
       <h3><span data-bind="text: apiTitle"></span></h3>
 
@@ -21,26 +21,43 @@
         Add Visualisation Here
       -->
 
-      <!-- <oj-chart id="ojChartBar" data="[[dataProvider]]" type="bar" orientation="vertical" hover-behavior="dim">
-
-        <template slot="itemTemplate">
-          <oj-chart-item value="[[$current.data.population]]" group-id="[[ ['Country Population', $current.data.name] ]]"
-            series-id="[[$current.data.code]]">
-          </oj-chart-item>
+      <oj-chart id="ojChartBar" data="[[dataProvider]]" type="bar" orientation="vertical" hover-behavior="dim">
+        <template slot="groupTemplate">
+          <oj-chart-group label-style="[[$current.depth == 1 ? {'fontWeight':'bold'} : {'fontStyle':'italic'}]]">
+          </oj-chart-group>
         </template>
         <template slot="seriesTemplate">
           <oj-chart-series color="[[getCountryColour($current.id)]]">
           </oj-chart-series>
         </template>
+        <template slot="itemTemplate">
+          <oj-chart-item value="[[$current.data.population]]" series-id="[[$current.data.code]]"
+            group-id="[[ ['Country Population', $current.data.name] ]]">
+          </oj-chart-item>
+        </template>
+      </oj-chart>
 
+      <!-- <oj-chart id="ojchartBar" data="[[dataProvider]]" type="bar" orientation="vertical" hover-behavior="dim">
         <template slot="groupTemplate">
           <oj-chart-group label-style="[[$current.depth == 1 ? {'fontWeight':'bold'} : {'fontStyle':'italic'}]]">
           </oj-chart-group>
         </template>
-
+        <template slot="seriesTemplate">
+          <oj-chart-series color="[[getCountryColour($current.id)]]">
+          </oj-chart-series>
+        </template>
+        <template slot="itemTemplate">
+          <oj-chart-item value="[[$current.data.population]]" series-id="[[$current.data.code]]"
+            group-id="[[ ['Country Population', $current.data.name] ]]">
+          </oj-chart-item>
+        </template>
       </oj-chart> -->
 
-      <oj-list-view id="countryList" data="[[dataProvider]]" selection-mode="multiple">
+      <!--
+        Add JET List View Here
+      -->
+
+      <oj-list-view id="countryList" aria-label="" data="[[dataProvider]]" selection-mode="multiple">
         <template slot="itemTemplate">
           <span>
             <oj-bind-text value="[[$current.data.name]]"></oj-bind-text> -
@@ -49,6 +66,16 @@
           </span>
         </template>
       </oj-list-view>
+
+      <!-- <oj-list-view id="countryList" data="[[dataProvider]]" selection-mode="multiple">
+        <template slot="itemTemplate">
+          <span>
+            <oj-bind-text value="[[$current.data.name]]"></oj-bind-text> -
+            <oj-bind-text value="[[$current.data.code]]"></oj-bind-text>:
+            <oj-bind-text value="[[$current.data.population]]"></oj-bind-text>
+          </span>
+        </template>
+      </oj-list-view> -->
     </div>
   </div>
 
@@ -66,6 +93,7 @@
   <oj-buttonset-many id="protocolSet" value="{{chosenProtocol}}" on-value-changed="[[invokePopup]]">
     <oj-option id="rest" value="REST">REST</oj-option>
     <oj-option id="graphql" value="GraphQL">GraphQL</oj-option>
+    <oj-option id="rest-subset" value="REST-Subset">REST - Field Subset</oj-option>
   </oj-buttonset-many>
 
 </div>

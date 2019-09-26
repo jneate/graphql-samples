@@ -63,6 +63,26 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data/world_countries.json',
                   oj.Logger.error(error);
                 });
             }
+          } else if (self.chosenProtocol()[0] === "REST-Subset") {
+
+            for (var i = 0; i < self.displayItems().length; i++) {
+              $.getJSON("https://restcountries.eu/rest/v2/alpha/" + self.displayItems()[i].code + "?fields=alpha3Code;name;population")
+                .done(function (value) {
+                  // Do something with the response
+                  self.calls(self.calls() + 1);
+                  self.allCountries.push({
+                    'id': value.alpha3Code,
+                    'name': value.name,
+                    'code': value.alpha3Code,
+                    'population': parseInt(value.population)
+                  });
+                })
+                .fail(function (error) {
+                  alert("Error");
+                  oj.Logger.error(error);
+                });
+            }
+
           } else {
 
             $.ajax({

@@ -5,7 +5,7 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luisw19/graphql-samples.git"
+    "url": "git+https://github.com/jneate/graphql-samples.git"
   },
   "keywords": [
     "GraphQL"
@@ -13,9 +13,9 @@
   "author": "Luis Weir / James Neate",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/luisw19/graphql-samples/issues"
+    "url": "https://github.com/jneate/graphql-samples/issues"
   },
-  "homepage": "https://github.com/luisw19/graphql-samples#readme",
+  "homepage": "https://github.com/jneate/graphql-samples#readme",
   "dependencies": {
     "apollo-server-express": "^1.3.6",
     "body-parser": "^1.18.2",
