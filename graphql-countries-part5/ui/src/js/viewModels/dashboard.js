@@ -34,7 +34,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data/world_countries.json',
         } else {
           protocolString = "PENDING";
         }
-        return "Protocol: " + protocolString + " - Calls Made: " + self.calls();
+        return "Type: " + protocolString + " - Calls Made: " + self.calls();
       });
       var handler = new oj.ColorAttributeGroupHandler();
 
@@ -126,6 +126,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data/world_countries.json',
         var selection = self.countrySelection();
         self.displayItems.removeAll();
         self.allCountries.removeAll();
+        self.protocol("PENDING");
+        self.calls(0);
         if (selection) {
           for (var i = 0; i < selection.length; i++) {
             // Find matching area from data model and grab info
