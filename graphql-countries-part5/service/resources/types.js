@@ -9,7 +9,8 @@ type Country {
   population: String,
   region: String,
   currency: String,
-  language: String
+  language: String,
+  oldField: String @deprecated
 }
 type Query {
   getCountriesByCode(code: String): Country

@@ -145,8 +145,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data/world_countries.json',
         }
       };
 
-      function addCountry(number, code) {
-        return 'country' + number + ': getCountriesByCode(code:"' + code + '") { ...fields } ';
+      function addCountry(code) {
+        return code + ': getCountriesByCode(code:"' + code + '") { ...fields } ';
       }
 
       function addFragment() {
@@ -156,7 +156,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data/world_countries.json',
       function getCountriesQuery() {
         var queryString = 'query{';
         for (var i = 0; i < self.displayItems().length; i++) {
-          queryString = queryString + addCountry(i, self.displayItems()[i].code);
+          queryString = queryString + addCountry(self.displayItems()[i].code);
         }
         return queryString + '} ' + addFragment();
       }
